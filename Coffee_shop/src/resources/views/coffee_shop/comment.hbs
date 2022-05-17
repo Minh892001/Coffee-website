@@ -1,0 +1,30 @@
+<section class="comment">
+    <h2><span>Client</span> Review</h2>
+    <img src="../img/Separator-White.png" alt="" class="text-center-block pt-2">
+    {{#each comment}}
+        <div class="client-comment">
+            <h3 class="client-name">{{this.name}}</h3>
+            <p class="sub-comment">{{ConvertTime this.createdAt}} | type: {{this.type}}</p>
+            <p class="comment-detail">{{this.comment}}</p>
+        </div>
+        <div class="seperate"></div>
+    {{/each}}
+
+    <div class="comment-form">
+        <form action="/comment/store" method="POST">
+            <div class="cmt-form-group">
+                <label for="name">Name</label>
+                <input type="text" class="form-controller" id="input-name" name="name" required>
+            </div>
+            <div class="cmt-form-group">
+                <label for="type">Type</label>
+                <input type="text" class="form-controller" id="input-type" name="type" required>
+            </div>
+            <div class="cmt-form-group">
+                <label for="comment">Comment</label>
+                <textarea type="text" class="form-controller" id="input-comment" name="comment" required></textarea>
+            </div>
+            <button type="submit" class="btn btn-sm post-cmt">Post</button>
+        </form>  
+    </div>
+</section>

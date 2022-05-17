@@ -1,0 +1,53 @@
+{{#section 'js'}}
+<script>
+    function validate() {
+        return true;
+    }
+</script>
+{{/section}}
+
+<form method="POST" action="/register/store" class="form-register">
+
+        <div class="register-container">
+            <img src="../img/logo.png" alt="">
+            <h3>Register</h3>
+
+            <div class="form-group">
+                <label for="username">Username</label>
+                <input type="text" class="form-control" name="username" id="username" required>
+            </div>
+
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" class="form-control" name="password" id="password" required>
+            </div>
+
+            <div class="form-group">
+                <label for="name">Name</label>
+                <input type="text" class="form-control" name="name" id="name" required>
+            </div>
+
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" class="form-control" name="email" id="email" required>
+            </div>
+
+            <div class="form-group">
+                <label for="address">Address</label>
+                <input type="text" class="form-control" name="address" id="address" required>
+            </div>
+
+            <div class="form-group">
+                <label for="phone">Phone</label>
+                <input type="text" class="form-control" name="phone" id="phone" required>
+            </div>
+
+            <button type="submit" class="btn-sm">Register</button>
+            {{#if success}}
+                <p class="notify-success">{{notification}}</p>
+            {{else}}
+                <p class="notify-failure">{{notification}}</p>
+            {{/if}}
+        </div>
+
+</form>

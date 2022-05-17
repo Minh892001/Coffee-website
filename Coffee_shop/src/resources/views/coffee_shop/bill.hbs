@@ -1,0 +1,86 @@
+<section class="bill">
+    <h1><span>ORDER</span> STATUS</h1>
+    <img src="../img/Separator-White.png" alt="" class="text-center-block pt-2">
+    <div class="bill-container">
+        <div class="bill-header">
+            {{#if message}}
+                <i class="fa-solid fa-circle-check" id="i-true"></i>
+                <h1 class="true">{{message}}</h1>
+
+                <div class="bill-user-info">
+                    <div class="bill-info-header">
+                        <i class="fa-solid fa-user"></i>
+                        <h3 class="user-info">User information</h3>
+                    </div>
+                    <div class="user-info">
+                        <p>User's name: {{toUpper info.name}}</p>
+                        <p>Tel: {{info.tel}}</p>
+                        <p>Email: {{info.email}}</p>
+                        <p>Note: {{info.note}}</p>
+                    </div>
+                </div>
+
+                <div class="bill-user-info">
+                    <div class="bill-info-header">
+                        <i class="fa-solid fa-location-dot"></i>
+                        <h3 class="user-info">Address</h3>
+                    </div>
+                    <div class="user-info">
+                        <p>Address: {{toUpper info.address}}</p>
+                        <p>Payment method: Payment on delivery</p>
+                    </div>
+                </div>
+
+                <div class="bill-user-info">
+                    <div class="bill-info-header">
+                        <i class="fa-solid fa-truck"></i>
+                        <h3 class="user-info">Shipping unit</h3>
+                    </div>
+                    <div class="user-info">
+                        <p>Unit: {{info.ship}}</p>
+                    </div>
+                </div>
+
+                <div class="buy-items">
+                    <div class="bill-info-header bought">
+                        <i class="fa-solid fa-bag-shopping"></i>
+                        <h3 class="user-info">Bought products</h3>
+                    </div>
+
+                    {{#each products}}
+                    <div class="buy-items-container"> 
+                        <img src="../img/{{this.image}}" alt="">
+                        <div class="bought-product">
+                            <h3 class="bought-product-heading">{{this.name}}</h3>  
+                            <span>Quantity: {{this.quantity}}</span>
+                        </div>
+                    </div>
+                    {{/each}} 
+                    <div class="total">Total bill: <span>${{info.total}}</span></div>
+                </div>
+
+                {{else}}
+                <i class="fa-solid fa-circle-xmark" id="i-wrong"></i>
+                <h1 class="wrong">Something wrong with your order, please check again</h1>
+
+                <div class="bill-content">
+                    <p>Make sure:</p>
+                    <ul>
+                        <li>Your product in your cart is not empty</li>
+                        <li>Enter email according to the standard</li>
+                        <li>Your phone number is not a spam phone number</li>
+                        <li>Your address is in VietNam (only ship around VietNam)</li>
+                    </ul>
+                    <p>More help:</p>
+                    <ul>
+                        <li>Contact us: 0945936684</li>
+                        <li>Our office: 123/45 Thanh Xuan Bac Street, Thanh Xuan District</li>
+                        <li>Send email: cafenacoffee@gmail.com</li>
+                        <li>We always work 24/24 EXCEPT holiday</li>
+                    </ul>
+                </div>
+            {{/if}}
+        </div>
+    </div>
+    <a href="/" class="btn btn-sm">Back to home</a>
+</section>

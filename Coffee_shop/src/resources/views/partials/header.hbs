@@ -1,0 +1,89 @@
+<header class="header">
+
+    <a href="/" class="logo">
+        <img src="/img/logo.png" alt="Ảnh logo">
+    </a>
+
+    {{#if lcIsAuthenticated}}
+    <nav class="navbar2">
+        <a href="/">HOME</a>
+        <a href="/about">ABOUT</a>
+        <a href="/menu">MENU</a>
+        <a href="/comment">REVIEW</a>
+        <a href="/blog">BLOGS</a>
+    </nav>
+    {{else}}
+    <nav class="navbar">
+        <a href="/">HOME</a>
+        <a href="/about">ABOUT</a>
+        <a href="/menu">MENU</a>
+        <a href="/comment">REVIEW</a>
+        <a href="/blog">BLOGS</a>
+    </nav>
+    {{/if}}
+
+    <div class="icons">
+        <div class="fas fa-search" id="search-icon"></div>
+        <a href="/cart" class="fas fa-shopping-cart" id="cart-btn"></a>
+        <form action="/logout" method="POST" id="form-logout">
+            {{#if lcIsAuthenticated}}
+            <div class="user-header">
+                <div class="user-info">
+                    <h3>Welcome, {{getName lcAuthUser.name}}</h3>
+                    <i class="fa-solid fa-caret-down"></i>
+                </div>
+
+                <ul class="user-list">
+                    <li class="user-item">
+                        <i class="fa-solid fa-user-gear"></i>
+                        User info
+                    </li>
+                    <li class="user-item">
+                        <i class="fa-solid fa-list-check"></i>
+                        Manage order
+                    </li>
+                    <li class="user-item">
+                        <i class="fa-solid fa-right-from-bracket"></i>
+                        <button type="submit">Log out</button>
+                    </li>
+                </ul>
+            </div>
+            {{else}}
+            <a href="/login" class="fa-solid fa-user" id="user-btn"></a>
+            {{/if}}
+        </form>
+    </div>
+
+
+
+    <form method="GET" class="search-modal" action="/menu/search">
+        <input type="text" name="product" id="input-search" placeholder="Search product...">
+        <button type="submit" class="search-btn">Search</button>
+    </form>
+
+    <script>
+        var searchIcon = document.querySelector('#search-icon')
+        var searchModal = document.querySelector('.search-modal')
+        var searchBtn = document.querySelector('.search-btn')
+        var header = document.querySelector('.header')
+
+        searchIcon.onclick = (event) => {
+            event.stopPropagation();
+            searchModal.classList.add('flex');
+        }
+
+        searchModal.onclick = function (event) {
+            event.stopPropagation();
+        }
+
+        header.onclick = () => {
+            searchModal.classList.remove('flex')
+        }
+    </script>
+
+    <div class="search-form">
+        <input type="search" id="search-box" placeholder="search here...">
+        <label for="search-box" class="fas fa-search"></label>
+    </div>
+
+</header>

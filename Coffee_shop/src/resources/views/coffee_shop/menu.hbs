@@ -1,0 +1,131 @@
+<section>
+    <div class="menu-filter">
+        <div class="menu-filter-header">
+            <i class="fa-solid fa-filter"></i>
+            <span>Filter</span>
+            <ul class="filter-list">
+                <li class="filter-item">
+                    <a href="/menu/alphabet-increase">A -> Z</a>
+                </li>
+                <li class="filter-item">
+                    <a href="/menu/alphabet-decrease">Z -> A</a>
+                </li>
+                <li class="filter-item">
+                    <a href="/menu/price-increase">Price increase</a>
+                </li>
+                <li class="filter-item">
+                    <a href="/menu/price-decrease">Price decrease</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="menu-page">
+        <h3>COFFEE <span>SEED</span></h3>
+        <img src="../img/Separator-White.png" alt="" class="text-center-block pt-2">
+        <div class="menu-container">
+            {{#if x}}
+                {{#each x}}
+                <div class="box">
+                    <div class="icons">
+                        <a data-id="{{this._id}}" id="add-product" class="fas fa-shopping-cart"></a>
+                        <a href="#" class="fas fa-heart" id="like-btn"></a>
+                        <a href="/detail/{{this.slug}}" class="fas fa-eye"></a>
+                    </div>
+                    <div class="image">
+                        <img src="../img/{{this.image}}" alt="{{this.name}}">
+                    </div>
+                    <div class="content">
+                        <h3>{{this.name}}</h3>
+                        <div class="price">${{this.price}}</div>
+                    </div>
+                </div>
+                {{/each}}
+            {{/if}}
+            {{#each y}}
+            <div class="box">
+                <div class="icons">
+                    <a data-id="{{this._id}}" id="add-product" class="fas fa-shopping-cart"></a>
+                    <a href="#" class="fas fa-heart" id="like-btn"></a>
+                    <a href="/detail/{{this.slug}}" class="fas fa-eye"></a>
+                </div>
+                <div class="image">
+                    <img src="../img/{{this.image}}" alt="{{this.name}}">
+                </div>
+                <div class="content">
+                    <h3>{{this.name}}</h3>
+                    <div class="price">${{this.price}}</div>
+                </div>
+            </div>
+            {{/each}}
+        </div>
+
+        {{#if z}}
+        <h3><span>HOT</span> DRINK</h3>
+        <img src="../img/Separator-White.png" alt="" class="text-center-block pt-2">
+        <div class="menu-container">
+            {{#each z}}
+            <div class="box">
+                <div class="icons">
+                    <a data-id="{{this._id}}" id="add-product" class="fas fa-shopping-cart"></a>
+                    <a href="#" class="fas fa-heart"></a>
+                    <a href="/detail/{{this.slug}}" class="fas fa-eye"></a>
+                </div>
+                <div class="image">
+                    <img src="../img/{{this.image}}" alt="{{this.name}}">
+                </div>
+                <div class="content">
+                    <h3>{{this.name}}</h3>
+                    <div class="price">${{this.price}}</div>
+                </div>
+            </div>
+            {{/each}}
+        </div>
+        {{/if}}
+
+        {{#if k}}
+        <h3>PACKAGED <span>PRODUCT</span></h3>
+        <img src="../img/Separator-White.png" alt="" class="text-center-block pt-2">
+        <div class="menu-container">
+            {{#each k}}
+            <div class="box">
+                <div class="icons">
+                    <a class="fas fa-shopping-cart"></a>
+                    <a href="#" class="fas fa-heart"></a>
+                    <a href="/detail/{{this.slug}}" class="fas fa-eye"></a>
+                </div>
+                <div class="image-product">
+                    <img src="../img/{{this.image}}" alt="{{this.name}}">
+                </div>
+                <div class="content">
+                    <h3>{{this.name}}</h3>
+                    <div class="price">${{this.price}}</div>
+                </div>
+            </div>
+            {{/each}}
+        </div>
+        {{/if}}
+    </div>
+    <form name="add-form" method="GET"></form>
+</section>
+
+{{!-- Xử lý thêm vào giỏ hàng --}}
+<script>
+    var ProductId
+    var addForm = document.forms['add-form']
+    var Btns = document.querySelectorAll('#add-product')
+
+    Btns.forEach(function(btn) {
+        btn.onclick = function() {
+            ProductId = btn.getAttribute('data-id')
+            addForm.action = '/cart/store/' + ProductId;
+            addForm.submit();
+        }
+    })
+
+    var likeBtns = document.querySelectorAll('#like-btn')
+    likeBtns.forEach(function(btn) {
+        btn.onclick = function() {
+            alert('Thanks for voting!')
+        }
+    })
+</script>

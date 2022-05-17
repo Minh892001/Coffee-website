@@ -1,0 +1,102 @@
+<section class="product-container">
+    <div class="product-content">
+        <div class="row">
+            <div class="image">
+                <img src="/img/{{Coffee.image}}" alt="About us image">
+            </div>
+
+            <div class="content">
+                <h3 class="product-detail-name">{{Coffee.name}}</h3>
+                <p class="prouct-sale-price"><span>${{Coffee.actualprice}}</span> ${{Coffee.price}}</p>
+                <div class="product-header-detail">
+                    <p><span>Have sold:</span> {{Coffee.sale}}</p>
+                    <p><span>Review:</span> {{Coffee.review}}</p>
+                    <p><span>Detail:</span> {{Coffee.description}}</p>
+                    <p><span>Color:</span> {{Coffee.color}}</p>
+                </div>
+                <div class="buttons_added">
+                    <span class="product-quantity">Quantity</span>
+                    <input class="minus is-form" type="button" value="-">
+                    <input aria-label="quantity" class="input-qty" max="10" min="1" type="number" value="1">
+                    <input class="plus is-form" type="button" value="+">
+                    <span class="product-left">{{Coffee.rest-product}} products left</span>
+                </div>
+                <div class="buy-btn">
+                    <button class="btn-sm btn-add" data-id="{{Coffee._id}}">Add to cart</button>
+                    <a class="btn-sm">Buy</a>
+                </div>
+           </div>
+        </div>
+       
+        <div class="more-detail">
+            <h3 class="more-detail-heading">More detail about product</h3>
+            <div class="more-detail-content">
+                <p><span>More-detail:</span> {{Coffee.more-detail}}</p>
+                <p><span>Brand:</span> {{Coffee.brand}}</p>
+                <p><span>From:</span> {{Coffee.from}}</p>
+            </div>
+        </div>
+
+        <div class="related-product">
+            <h3 class="related-product-heading">Related products</h3>
+            <div class="box-container">
+                {{#each relatedProducts1}}
+                <div class="box">
+                    <a href="/detail/Italy/{{this.slug}}">
+                        <img src="/img/{{this.image}}" alt="{{this.name}}">
+                        <h3>{{this.name}}</h3>
+                    </a>
+                    <div class="price">${{this.price}} <span>${{this.actualprice}}</span></div>
+                    <a href="" class="btn">add to cart</a>
+                </div>
+                {{/each}}
+                {{#each relatedProducts2}}
+                <div class="box">
+                    <a href="/detail/VietNam/{{this.slug}}">
+                        <img src="/img/{{this.image}}" alt="{{this.name}}">
+                        <h3>{{this.name}}</h3>
+                    </a>
+                    <div class="price">${{this.price}} <span>${{this.actualprice}}</span></div>
+                    <a href="#" class="btn">add to cart</a>
+                </div>
+                {{/each}}
+            </div>
+        </div>
+    </div>
+    <form id="add-form" method="POST">
+        <input type="text" class="send-quantity hidden" name="quantity">
+    </form>
+</section>
+
+
+<script>
+    {{!-- Xử lý input số lượng --}}
+    var inputQuantity = document.querySelector('.input-qty')
+    var incrementBtn = document.querySelector('.plus')
+    var decrementBtn = document.querySelector('.minus')
+    incrementBtn.onclick = function(e) {
+        inputQuantity.value++;
+        if(inputQuantity.value > {{Coffee.rest-product}}){
+            inputQuantity.value = {{Coffee.rest-product}}
+        }
+    }
+    decrementBtn.onclick = function(e) {
+        inputQuantity.value--;
+        if(inputQuantity.value <= 0) {
+            inputQuantity.value = 1
+        }
+    }
+
+    {{!-- Xử lý thêm vào giỏ hàng --}}
+    var valueQuantity = document.querySelector('.input-qty')
+    var addBtn = document.querySelector('.btn-add')
+    var addForm = document.querySelector('#add-form')
+    var sendForm = document.querySelector('.send-quantity')
+
+    addBtn.onclick = function() {
+        sendForm.value = valueQuantity.value
+        addForm.action = '/cart/store3/' + addBtn.getAttribute('data-id')
+        addForm.submit()
+    }
+
+</script>

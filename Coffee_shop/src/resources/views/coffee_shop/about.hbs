@@ -1,0 +1,96 @@
+<div class="about-container">
+    <div class="mySlides fade">
+        <img src="../img/about-page.jpg" alt="" width="100%" height="680px">
+    </div>
+
+    <div class="mySlides fade">
+        <img src="../img/about-page-2.jpeg" alt="" width="100%" height="680px">
+    </div>
+
+    <div class="mySlides fade">
+        <img src="../img/about-page-3.webp" alt="" width="100%" height="680px">
+    </div>
+
+    <div class="dots" style="text-align:center">
+        <span class="dot" onclick="currentSlide(0)"></span> 
+        <span class="dot" onclick="currentSlide(1)"></span> 
+        <span class="dot" onclick="currentSlide(2)"></span> 
+    </div>
+
+    <div class="about-header">
+        <div class="about-content-heading text-center">
+            <img src="../img/logo.png" alt="" class="text-center-block">
+            <h1>Cafena Coffee</h1>
+            <p>
+                Greatness in a cup!
+                <img src="../img/Separator-White.png" alt="" class="text-center-block">
+            </p>
+        </div>  
+    </div>
+
+    <div class="about-body">
+        <div class="row">
+            <div class="image">
+                <img src="../img/about-1.jpg" alt="">   
+            </div>
+
+            <div class="content">
+                <h3> <span>Say no to</span> blended coffee</h3>
+                <p>At Cafena Coffee, all coffees comply with the principle of rustic roasting, absolutely no additives, flavorings or other ingredients are used. To create a seductive and passionate aroma for coffee, Cafena Coffee uses roasting techniques with advanced Hot Air technology, plus a thorough understanding of each coffee variety - each variety will produce a unique aroma. different flavors so that they can be mixed to create their own taste without the use of flavorings or other chemicals.</p>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="content">
+                <h3><span>Kind Coffee for</span> Coffee Connoisseurs</h3>
+                <p>Stemming from an endless passion for Coffee, Cafena Coffee and Associates constantly explore with care and meticulousness from the selection of raw materials, types of coffee, preliminary processing, preservation to methods. Strictly roasting to be able to bring customers the most enjoyable experience with a cup of coffee every morning.</p>
+            </div>
+
+            <div class="image">
+                <img src="../img/about-2.jpg" alt="">   
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="image">
+                <img src="../img/about-3.jpg" alt="">   
+            </div>
+
+            <div class="content">
+                <h3>The best source <span>of ingredients</span></h3>
+                <p>Cafena Coffee carefully and meticulously selects the best coffee beans from famous raw materials areas such as Cau Dat, Di Linh, Buon Me Thuot, coffee is purchased directly from the Farm to ensure 100% ripe fruit wet processing, drying greenhouse. After preliminary processing, the coffee beans must have a moisture content of 12.5%, no impurities, broken, flat, black beans, all beans must reach size S18 (7.2mm) to meet export standards and prove the source. origin of origin.</p>
+            </div>
+        </div>
+    </div> 
+</div>
+    
+<script>
+    var slideIndex;
+
+    function showSlides() {
+        var i;
+        var slides = document.getElementsByClassName("mySlides");
+        var dots = document.getElementsByClassName("dot");
+        for (i = 0; i < slides.length; i++) {
+            slides[i].style.display = "none";  
+        }
+        for (i = 0; i < dots.length; i++) {
+            dots[i].className = dots[i].className.replace(" active", "");
+        }
+
+        slides[slideIndex].style.display = "block";  
+        dots[slideIndex].className += " active";
+        slideIndex++;
+
+        if (slideIndex > slides.length - 1) {
+            slideIndex = 0
+        }    
+        setTimeout(showSlides, 3000);
+    }
+    showSlides(slideIndex = 0);
+ 
+ 
+    function currentSlide(n) {
+        showSlides(slideIndex = n);
+    }
+</script>

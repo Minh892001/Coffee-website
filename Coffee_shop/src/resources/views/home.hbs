@@ -1,0 +1,220 @@
+<section class="home" id="home">
+
+    <div class="content">
+        <h3>fresh coffee in the morning</h3>
+        <p>Sitting down with a nice cup of coffee in the morning is a great way to wake up and take a few moments to yourself before rushing out the door.</p>
+    </div>
+
+</section>
+
+<!-- about starts -->
+<section class="about" id="about">
+
+    <h1 class="heading"> <span>about</span> us </h1>
+    <img src="img/Separator-White.png" alt="" class="text-center-block pt-2">
+
+    <div class="row">
+
+        <div class="image">
+            <img src="/img/about-img.jpeg" alt="About us image">
+        </div>
+
+        <div class="content">
+            <h3 class="capitalize">what makes our coffee special?</h3>
+            <p>At this point, you may have been acquainted with the words "speciality coffee". For the uninitiated, speciality coffee is coffee graded above 80, according to the Speciality Coffee Association (SCA). It means that the coffee quality is beyond the final product served on your cup. Its quality springs from the start — the type of coffee beans grown, the region, roasting, and brewing, down to the actual coffee served right under your nose.</p>
+            <a href="/about" class="btn btn-sm">learn more</a>
+        </div>
+
+    </div>
+
+</section>
+<!-- about ends -->
+
+<!-- menu starts -->
+<section class="menu" id="menu">
+    <h1 class="heading">our <span>menu</span></h1>
+    <img src="img/Separator-White.png" alt="" class="text-center-block pt-2">
+
+    <h3 class="text-center">Italian Coffee</h3>
+    <div class="box-container">
+        {{#each x}}
+        <div class="box">
+            <a href="/detail/{{this.slug}}">
+                <img src="img/{{this.image}}" alt="{{this.name}}">
+                <h3 class="item-name">{{this.name}}</h3>
+            </a>
+            <div class="price">${{this.price}} <span>${{this.actualprice}}</span></div>
+            <a data-id="{{this._id}}" class="btn" id="add-product">add to cart</a>
+        </div>
+        {{/each}}
+    </div>
+    <form method="GET" name="add-form"></form>
+
+    <h3 class="text-center">VietNamese Coffee</h3>
+    <div class="box-container">
+        {{#each y}}
+        <div class="box">
+            <a class="detail" href="/detail/{{this.slug}}">
+                <img src="img/{{this.image}}" alt="{{this.name}}">
+                <h3>{{this.name}}</h3>
+            </a>
+            <div class="price">${{this.price}} <span>${{this.actualprice}}</span></div>
+            <a data-id="{{this._id}}" class="btn" id="add-product">add to cart</a>
+        </div>
+        {{/each}}
+    </div>
+    
+</section>
+<!-- menu ends -->
+
+{{!-- Xử lý thêm vào giỏ hàng --}}
+<script>
+    var ProductId
+    var addForm = document.forms['add-form']
+    var Btns = document.querySelectorAll('#add-product')
+
+    Btns.forEach(function(btn) {
+        btn.onclick = function() {
+            ProductId = btn.getAttribute('data-id')
+            addForm.action = '/cart/store/' + ProductId;
+            addForm.submit();
+        }
+    })
+</script>
+
+<section class="products" id="products">
+
+    <h1 class="heading"> our <span>products</span> </h1>
+    <img src="img/Separator-White.png" alt="" class="text-center-block pt-2">
+
+    <div class="box-container">
+        {{#each z}}
+        <div class="box">
+            <div class="icons">
+                <a href="#" class="fas fa-shopping-cart"></a>
+                <a href="#" class="fas fa-eye"></a>
+            </div>
+            <div class="image">
+                <img src="img/{{this.image}}" alt="{{this.name}}">
+            </div>
+            <div class="content">
+                <h3>{{this.name}}</h3>
+                <div class="stars">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star-half-alt"></i>
+                </div>
+                <div class="price">${{this.price}}</div>
+            </div>
+        </div>
+        {{/each}}
+    </div>
+
+</section>
+
+<!-- review section starts  -->
+
+<section class="review" id="review">
+
+    <h1 class="heading"> customer's <span>review</span> </h1>
+    <img src="img/Separator-White.png" alt="" class="text-center-block pt-2">
+
+    <div class="box-container">
+
+        <div class="box">
+            <img src="img/quote-img.png" alt="" class="quote">
+            <h3 class="review-name">Tấn Minh</h3>
+            <p>Lướt qua menu Cafena Cooffee thì cũng phải đến 50 món khác nhau, đủ loại, đủ hương vị và màu sắc. Ngoài những món nước best-seller như: cà phê sữa, cà phê đá, cà phê đá xay, trà đào cam sả, ô long hạt sen… Cafena Coffee còn rất biết “làm mới” mình bằng hàng loạt những thức uống theo mùa. Mùa nào thì món đấy, thực khách cũng được dịp đổi khẩu vị cho đỡ ngán.</p>
+            
+            <div class="stars">
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+            </div>
+        </div>
+
+        <div class="box">
+            <img src="img/quote-img.png" alt="" class="quote">
+            <h3>Công Minh</h3>
+            <p>Mức giá cho mỗi món nước tại Cafena Coffee sẽ giao động từ $10 đến $50. Với chất lượng mang lại, cũng như những không gian được thương hiệu đầu tư xây dựng, hầu như thực khách cũng không có gì phàn nàn về mức giá này.</p>
+            <div class="stars">
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+            </div>
+        </div>
+        
+        <div class="box">
+            <img src="img/quote-img.png" alt="" class="quote">
+            <h3>Minh Tuấn</h3>
+            <p>Cafena Coffee nằm ngay trên đường Nguyễn Trãi, trung tâm thành phố Hà Nội, rất thuận tiện cho việc đi lại. Nếu ai yêu thích sự yên tĩnh thì Michio là lựa chọn hoàn hảo nhất bởi không gian cực kỳ yên tĩnh, nhẹ nhàng và thoải mái, nơi đây sẽ là mội không gian để bạn lắng lòng sau những bộn bề của cuộc sống.</p>
+            <div class="stars">
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+            </div>
+        </div>
+
+    </div>
+
+</section>
+
+<!-- review section ends -->
+
+<!-- blogs section starts  -->
+
+<section class="blogs" id="blogs">
+
+    <h1 class="heading"> our <span>blogs</span> </h1>
+    <img src="img/Separator-White.png" alt="" class="text-center-block pt-2">
+
+    <div class="box-container">
+
+        <div class="box">
+            <div class="image">
+                <img src="img/blog-1.jpeg" alt="">
+            </div>
+            <div class="content">
+                <a href="#" class="title">Tasty and refreshing coffee</a>
+                <span>By Tan Minh / 21st May, 2021</span>
+                <p>Probably one of the best things to have happened during the lockdown is the Dalgona coffee trend...</p>
+                <a href="#" class="btn">read more</a>
+            </div>
+        </div>
+
+        <div class="box">
+            <div class="image">
+                <img src="img/blog-2.jpeg" alt="">
+            </div>
+            <div class="content">
+                <a href="#" class="title">A cup of coffee in the morning will...</a>
+                <span>By Minh Tuan / 21st may, 2022</span>
+                <p>Sitting down with a nice cup of coffee in the morning is a great way to wake up and take a few...</p>
+                <a href="#" class="btn">read more</a>
+            </div>
+        </div>
+
+        <div class="box">
+            <div class="image">
+                <img src="img/blog-3.jpeg" alt="">
+            </div>
+            <div class="content">
+                <a href="#" class="title">Recipe for Macha Latte Coffee</a>
+                <span>By Vu Tuan / 21st May, 2022</span>
+                <p>Mix instant coffee, sugar, and hot water in a mixing bowl. Blend well using a hand-mixer...</p>
+                <a href="#" class="btn">read more</a>
+            </div>
+        </div>
+
+    </div>
+
+</section>
+
+<!-- blogs section ends -->
