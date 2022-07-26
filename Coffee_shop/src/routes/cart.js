@@ -5,6 +5,6 @@ const cartController = require('../app/controllers/CartController')
 router.get('/', cartController.index)
 router.delete('/:id', cartController.delete)
 router.get('/store/:id', cartController.store)
-router.post('/store3/:id', cartController.store2)
+router.post('/store/:id', cartController.store)
 
 module.exports = router
